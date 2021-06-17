@@ -13,13 +13,21 @@ app.post("/file", (req, res) => {
     temp.track();
     const tempfile = temp.createWriteStream({ suffix: ".pdf" });
 
-    https.get(url, (result) => {
-        result.pipe(tempfile);
+    https
+        .get(url, (result) => {
+            result.pipe(tempfile);
 
-        result.on("close", () => {
-            if (typeof tempfile.path === "string") res.download(tempfile.path);
+            result.on("close", () => {
+                if (typeof tempfile.path === "string") res.download(tempfile.path);
+            });
+
+            result.on("error", () => {
+                res.status(500).send("unable to write file on the system");
+            });
+        })
+        .on("error", () => {
+            res.status(500).send("unable to download file from url");
         });
-    });
 });
 
 app.listen(port, () => {
