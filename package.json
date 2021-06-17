@@ -6,7 +6,7 @@
     "license": "ISC",
     "main": "server.js",
     "scripts": {
-        "build": "npm run build-ts && npm run copyAssets",
+        "build": "npm run build-ts",
         "copyAssets": "ts-node copyAssets.ts",
         "build-ts": "tsc",
         "watch-ts": "tsc -w",
