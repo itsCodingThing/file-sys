@@ -1,0 +1,43 @@
+{
+    "name": "file-sys",
+    "version": "1.0.0",
+    "description": "template for node + typescript projects",
+    "author": "Bhanu Pratap Singh",
+    "license": "ISC",
+    "main": "server.js",
+    "scripts": {
+        "build": "npm run build-ts && npm run copyAssets",
+        "copyAssets": "ts-node copyAssets.ts",
+        "build-ts": "tsc",
+        "watch-ts": "tsc -w",
+        "watch-node": "nodemon dist/server.js",
+        "dev": "concurrently -i -n \"TS,NODE\" -c \"bgMagenta.bold,bgCyan.bold\" \"npm run watch-ts\" \"npm run watch-node\" ",
+        "lint": "eslint --ext .ts .",
+        "start": "node dist/server.js",
+        "heroku-postbuild": "tsc"
+    },
+    "engines": {
+        "node": "14.17.0"
+    },
+    "dependencies": {
+        "express": "^4.16.3",
+        "temp": "^0.9.4"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.7",
+        "@types/node": "^14.17.3",
+        "@types/shelljs": "^0.8.8",
+        "@types/temp": "^0.9.0",
+        "@typescript-eslint/eslint-plugin": "^4.26.1",
+        "@typescript-eslint/parser": "^4.26.1",
+        "concurrently": "^5.2.0",
+        "eslint": "^7.28.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "nodemon": "^2.0.7",
+        "prettier": "^2.0.5",
+        "shelljs": "^0.8.4",
+        "ts-node": "^8.10.2",
+        "typescript": "^3.9.7"
+    }
+}
