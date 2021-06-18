@@ -9,7 +9,7 @@ const port: number | string = process.env.PORT || 1729;
 app.use(express.json());
 app.use(cors());
 
-app.get("/file", (req, res) => {
+app.post("/file", (req, res) => {
     const { url } = req.body;
 
     temp.track();
