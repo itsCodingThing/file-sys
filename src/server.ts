@@ -1,11 +1,13 @@
 import express from "express";
 import https from "https";
 import temp from "temp";
+import cors from "cors";
 
 const app = express();
 const port: number | string = process.env.PORT || 1729;
 
 app.use(express.json());
+app.use(cors());
 
 app.post("/file", (req, res) => {
     const { url } = req.body;

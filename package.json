@@ -20,10 +20,12 @@
         "node": "14.17.0"
     },
     "dependencies": {
+        "cors": "^2.8.5",
         "express": "^4.16.3",
         "temp": "^0.9.4"
     },
     "devDependencies": {
+        "@types/cors": "^2.8.10",
         "@types/express": "^4.17.7",
         "@types/node": "^14.17.3",
         "@types/shelljs": "^0.8.8",
