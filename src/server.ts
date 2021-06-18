@@ -9,7 +9,7 @@ const port: number | string = process.env.PORT || 1729;
 app.use(express.json());
 app.use(cors());
 
-app.post("/file", (req, res) => {
+app.get("/file", (req, res) => {
     const { url } = req.body;
 
     temp.track();
@@ -20,7 +20,10 @@ app.post("/file", (req, res) => {
             result.pipe(tempfile);
 
             result.on("close", () => {
-                if (typeof tempfile.path === "string") res.download(tempfile.path);
+                res.setHeader("Content-Type", "application/pdf");
+                res.setHeader("Content-Disposition", "attachment; filename=paper.pdf");
+
+                if (typeof tempfile.path === "string") res.sendFile(tempfile.path);
             });
 
             result.on("error", () => {
